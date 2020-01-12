@@ -1,0 +1,31 @@
+﻿@model ProgressBar.Models.Lote
+
+
+<h3>@Model.IDLote</h3>
+<h3>@Model.Nome</h3>
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#loginModal" id="btnProcessamento">Iniciar Processamento</button>
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#progressModal" id="btnProgresso">Ver Progresso</button>
+
+
+
+<div class="modal fade" tabindex="-1" id="loginModal" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            @{
+                Html.RenderPartial("_ModalLogin", new ProgressBar.Models.LoginClass());
+            }
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-2" id="progressModal" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            @{
+                Html.RenderPartial("_ObterInformacoesProcessamento", new ProgressBar.Models.RetornoProcessamento() { IDLote = Model.IDLote } );
+            }
+
+        </div>
+    </div>
+</div>
